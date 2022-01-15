@@ -27,9 +27,9 @@
                             @if (Str::contains($food->image_url, 'http'))
                                 <img src="{{ $food->image_url }}" alt="food-photo" title="{{ $food->name }}"
                                     class="card-img-top" style="height: 16rem;">
-                                {{-- @else --}}
-                                {{-- <img src="{{ $food->image_url }}" alt="food-photo" title="{{ $food->name }}"
-                            class="card-img-top"> --}}
+                            @else
+                                <img src="/images/{{ $food->image_url }}" alt="food-photo" title="{{ $food->name }}"
+                                    class="card-img-top" style="height: 16rem;">
                             @endif
                         </a>
                         <div class="card-body">
