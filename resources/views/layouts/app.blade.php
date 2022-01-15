@@ -25,6 +25,10 @@
 
 <body class="bg-secondary bg-opacity-25">
 
+    @php
+        $user = Auth::user();
+    @endphp
+
     <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm ">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -40,10 +44,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('admin.foods.index') }}">Manage
-                            Fruits</a>
-                    </li>
+                    @if($user && $user->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('admin.foods.index') }}">Manage
+                                Fruits</a>
+                        </li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -66,7 +72,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ $user->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

@@ -14,26 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// nembak buat cek view doang
-Route::get('/createFruit', function (){
-    return view('admin.foods.create');
-});
-
-Route::get('/updateFruit', function (){
-    return view('admin.foods.edit');
-});
-
-Route::get('/shopCarts', function (){
-    return view('transactions.carts');
-});
-
-Route::get('/transactionReceipt', function (){
-    return view('transactions.receipt');
-});
-// sampe sini nembaknya
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::group(['prefix' => 'foods'], function() {
         Route::get('/', [\App\Http\Controllers\Admin\FoodController::class, 'index'])->name('admin.foods.index');
         Route::get('/create', function() {

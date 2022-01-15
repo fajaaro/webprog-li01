@@ -20,12 +20,11 @@
                     @csrf
                     <div class="mb-3">
                         <label for="fruitName" class="form-label fw-bold">Fruit Name</label>
-                        <input type="text" name="name" class="form-control" id="fruitName" placeholder="">
+                        <input type="text" name="name" class="form-control" id="fruitName" required>
                     </div>
                     <div class="mb-3">
                         <label for="fruitDescription" class="form-label fw-bold">Fruit Description</label>
-                        <textarea class="form-control" name="description" id="fruitDescription" rows="3"
-                            placeholder=""></textarea>
+                        <textarea class="form-control" name="description" id="fruitDescription" rows="3" required></textarea>
                         <div id="passwordHelpBlock" class="form-text mb-3">
                             Write a single sentence about the Fruit Description.
                         </div>
@@ -33,16 +32,16 @@
 
                     <div class="mb-3">
                         <label for="fruitPrice" class="form-label fw-bold">Fruit Price</label>
-                        <input type="text" name="price" class="form-control" id="fruitPrice" placeholder="">
+                        <input type="number" name="price" class="form-control" id="fruitPrice" min="0" required>
                     </div>
                     <div class="mb-3">
                         <label for="fruitStock" class="form-label fw-bold">Fruit Stock</label>
-                        <input type="text" name="stock" class="form-control" id="fruitStock" placeholder="">
+                        <input type="number" name="stock" class="form-control" id="fruitStock" min="0" placeholder="Min: 0" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label fw-bold">Fruit Image</label>
-                        <input class="form-control" type="file" name="image_url" id="formFile">
+                        <input class="form-control" type="file" name="image" id="formFile" required>
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">

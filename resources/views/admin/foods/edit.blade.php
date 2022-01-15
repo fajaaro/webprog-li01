@@ -15,18 +15,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                {{-- form update fruit --}}
                 <form action="{{ route('admin.foods.update', $food->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="mb-3">
                         <label for="fruitName" class="form-label fw-bold">Fruit Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="{{ $food->name }}">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ $food->name }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="fruitDescription" class="form-label fw-bold">Fruit Description</label>
-                        <textarea class="form-control" name="description" id="fruitDescription" rows="3"
-                            placeholder="{{ $food->description }}"></textarea>
+                        <textarea class="form-control" name="description" id="fruitDescription" rows="3" required>{{ $food->description }}</textarea>
                         <div id="passwordHelpBlock" class="form-text mb-3">
                             Write a single sentence about the Fruit Description.
                         </div>
@@ -34,18 +32,20 @@
 
                     <div class="mb-3">
                         <label for="fruitPrice" class="form-label fw-bold">Fruit Price</label>
-                        <input type="text" name="price" class="form-control" id="fruitPrice"
-                            placeholder="{{ $food->price }}">
+                        <input type="text" name="price" class="form-control" id="fruitPrice" value="{{ $food->price }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="fruitStock" class="form-label fw-bold">Fruit Stock</label>
-                        <input type="text" name="stock" class="form-control" id="fruitStock"
-                            placeholder="{{ $food->stock }}">
+                        <input type="text" name="stock" class="form-control" id="fruitStock" value="{{ $food->stock }}" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label fw-bold">Fruit Image</label>
-                        <input class="form-control" type="file" name="image_url" id="formFile">
+                        <input class="form-control" type="file" name="image" id="formFile">
+                        @if($food->image_url)
+                            <p class="mt-3"><b>WARNING: </b>If you upload new fruit image, then this photo will be replaced.</p>
+                            <img src="{{ getFoodImageUrl($food->image_url) }}" alt="food img" class="w-50">
+                        @endif
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -55,7 +55,6 @@
                         <button class="btn btn-primary" type="submit">Update Fruit</button>
                     </div>
                 </form>
-                {{-- end update fruit form --}}
             </div>
         </div>
     </div>
