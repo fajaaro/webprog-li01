@@ -34,10 +34,6 @@
                         <label for="fruitPrice" class="form-label fw-bold">Fruit Price</label>
                         <input type="number" name="price" class="form-control" id="fruitPrice" min="0" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="fruitStock" class="form-label fw-bold">Fruit Stock</label>
-                        <input type="number" name="stock" class="form-control" id="fruitStock" min="0" placeholder="Min: 0" required>
-                    </div>
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label fw-bold">Fruit Image</label>

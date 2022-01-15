@@ -12,7 +12,6 @@ class CreateTransactionDetailsTable extends Migration
             $table->id();
             $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('food_id');
-            $table->unsignedInteger('quantity');
             $table->unsignedInteger('price');
             $table->timestamps();
 

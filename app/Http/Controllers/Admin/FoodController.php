@@ -23,7 +23,6 @@ class FoodController extends Controller
             'name' => 'required|unique:foods,name',
             'description' => 'required|max:1000',
             'price' => 'required|integer|max:1000000',
-            'stock' => 'required|integer|min:0',
             'image' => 'required',
         ]);
 
@@ -31,7 +30,6 @@ class FoodController extends Controller
         $food->name = $request->name;
         $food->description = $request->description;
         $food->price = $request->price;
-        $food->stock = $request->stock;
         $food->image_url = uploadFile($request->file('image'), 'foods');
 
         $food->save();
@@ -52,7 +50,6 @@ class FoodController extends Controller
             'name' => 'required',
             'description' => 'required|max:1000',
             'price' => 'required|integer|max:1000000',
-            'stock' => 'required|integer|min:0',
         ]);
 
         $food = Food::find($id);
@@ -67,7 +64,6 @@ class FoodController extends Controller
         $food->name = $request->name;
         $food->description = $request->description;
         $food->price = $request->price;
-        $food->stock = $request->stock;
         $food->image_url = $imageUrl;
         $food->save();
 

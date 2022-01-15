@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container">
+        @include('flash')
+
         <div class="row row-cols-1 row-cols-md-4 g-4">
             @foreach ($foods as $food)
                 <div class="col">
@@ -19,8 +21,17 @@
                             <h5 class="card-title text-center">{{ $food->name }}</h5>
                             <p class="card-text">{{ $food->description }}</p>
                             <p class="card-text">Harga Satuan: {{ formatRupiah($food->price) }}</p>
-                            <p class="card-text">Sisa Stok: {{ $food->stock }}</p>
                         </div>
+                        @auth
+                            <div class="card-footer">
+                                <form action="{{ route('set-cookie') }}" method="post">
+                                    @csrf
+
+                                    <input type="hidden" name="food_id" value="{{ $food->id }}">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                                </form>
+                            </div>
+                        @endauth
                     </div>
                 </div>
             @endforeach

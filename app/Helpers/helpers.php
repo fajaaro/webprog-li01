@@ -24,7 +24,7 @@ function errorMessage($errors, $fieldName) {
 }
 
 function setNewCookie($name, $data) {
-    setcookie($name, $data);
+    setcookie($name, $data, 0, '/');
 }
 
 function unsetCookie($name) {
@@ -39,17 +39,17 @@ function getCarts() {
 }
 
 function getFoodsInCarts() {
-    $games = [];
+    $foods = [];
 
     if (isset($_COOKIE['carts'])) {
         $data = getCarts();
 
         foreach ($data as $foodId) {
-            $game = Food::find($foodId);
+            $food = \App\Models\Food::find($foodId);
 
-            if ($game) array_push($games, $game);
+            if ($food) array_push($foods, $food);
         }
     }
 
-    return $games;
+    return $foods;
 }

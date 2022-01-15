@@ -3,18 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'cookie'], function() {
+    Route::post('/set', [\App\Http\Controllers\CookieController::class, 'set'])->name('set-cookie');
+    Route::delete('/delete', [\App\Http\Controllers\CookieController::class, 'delete'])->name('delete-cookie');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::group(['prefix' => 'foods'], function() {
@@ -34,13 +28,13 @@ Route::group(['prefix' => 'foods'], function() {
     Route::get('/{id}', [\App\Http\Controllers\FoodController::class, 'show'])->name('foods.show');
 });
 
-Route::group(['prefix' => 'transactions'], function() {
+Route::group(['prefix' => 'transactions', 'middleware' => 'auth'], function() {
     Route::get('/carts', [\App\Http\Controllers\TransactionController::class, 'carts'])->name('transactions.carts');
     Route::get('/checkout', function() {
         return view('transactions.checkout');
-    });
+    })->name('transactions.checkout');
     Route::post('/checkout', [\App\Http\Controllers\TransactionController::class, 'checkout'])->name('transactions.checkout');
-    Route::get('/receipt', [\App\Http\Controllers\TransactionController::class, 'receipt'])->name('transactions.receipt');
+    Route::get('/receipt/{key}', [\App\Http\Controllers\TransactionController::class, 'receipt'])->name('transactions.receipt');
 });
 
 Auth::routes();

@@ -34,10 +34,6 @@
                         <label for="fruitPrice" class="form-label fw-bold">Fruit Price</label>
                         <input type="text" name="price" class="form-control" id="fruitPrice" value="{{ $food->price }}" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="fruitStock" class="form-label fw-bold">Fruit Stock</label>
-                        <input type="text" name="stock" class="form-control" id="fruitStock" value="{{ $food->stock }}" required>
-                    </div>
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label fw-bold">Fruit Image</label>

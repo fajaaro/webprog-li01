@@ -14,7 +14,6 @@ class CreateFoodsTable extends Migration
             $table->string('image_url');
             $table->text('description');
             $table->unsignedInteger('price');
-            $table->unsignedInteger('stock');
             $table->timestamps();
         });
     }
