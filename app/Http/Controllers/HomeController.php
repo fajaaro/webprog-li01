@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $foods = Food::latest()->paginate(8);
+        $foods = Food::latest()->simplePaginate(4);
 
         return view('home', compact('foods'));
     }
