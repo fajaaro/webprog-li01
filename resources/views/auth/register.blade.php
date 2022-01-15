@@ -40,6 +40,24 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="select" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                {{-- <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                --}}
+                                <select id="Select" name="role" class="form-select" aria-label="Default select example">
+                                    <option>Member</option>
+                                    <option>Admin</option>
+                                </select>
+                                {{-- @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

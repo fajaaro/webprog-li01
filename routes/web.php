@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/createFruit', function (){
+    return view('admin.foods.create');
+});
+
+Route::get('/updateFruit', function (){
+    return view('admin.foods.edit');
+});
+
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin'], function() {
@@ -30,17 +39,17 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::group(['prefix' => 'foods'], function() {
-   Route::get('/', [\App\Http\Controllers\FoodController::class, 'index'])->name('foods.index');
-   Route::get('/{id}', [\App\Http\Controllers\FoodController::class, 'show'])->name('foods.show');
+    Route::get('/', [\App\Http\Controllers\FoodController::class, 'index'])->name('foods.index');
+    Route::get('/{id}', [\App\Http\Controllers\FoodController::class, 'show'])->name('foods.show');
 });
 
 Route::group(['prefix' => 'transactions'], function() {
-   Route::get('/carts', [\App\Http\Controllers\TransactionController::class, 'carts'])->name('transactions.carts');
-   Route::get('/checkout', function() {
-       return view('transactions.checkout');
-   });
-   Route::post('/checkout', [\App\Http\Controllers\TransactionController::class, 'checkout'])->name('transactions.checkout');
-   Route::get('/receipt', [\App\Http\Controllers\TransactionController::class, 'receipt'])->name('transactions.receipt');
+    Route::get('/carts', [\App\Http\Controllers\TransactionController::class, 'carts'])->name('transactions.carts');
+    Route::get('/checkout', function() {
+        return view('transactions.checkout');
+    });
+    Route::post('/checkout', [\App\Http\Controllers\TransactionController::class, 'checkout'])->name('transactions.checkout');
+    Route::get('/receipt', [\App\Http\Controllers\TransactionController::class, 'receipt'])->name('transactions.receipt');
 });
 
 Auth::routes();
