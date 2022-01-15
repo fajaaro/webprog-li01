@@ -43,9 +43,7 @@
                     </div>
                 </div>
             @endforeach
-            {{-- <div class="d-flex justify-content-center">
-                {{ $foods->links() }}
-            </div> --}}
         </div>
+        <div class="d-flex justify-content-center mt-4">{{ $foods->links() }}</div>
     </div>
 @endsection
