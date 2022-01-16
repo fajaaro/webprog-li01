@@ -26,8 +26,8 @@
                             <p class="card-text">{{ $food->description }}</p>
                             <p class="card-text">{{ formatRupiah($food->price) }}</p>
                             <p class="card-text">Sisa Stok: {{ $food->stock }}</p>
-                            <div
-                                class="text-center d-flex justify-content-around card-footer bg-transparent border-success">
+                        </div>
+                        <div class="card-footer text-center d-flex justify-content-around card-footer bg-transparent border-success">
                                 <a href="{{ route('admin.foods.edit', $food->id) }}" class="btn btn-primary">Update</a>
                                 <form action="{{ route('admin.foods.destroy', $food->id) }}" method="post">
                                     @csrf
@@ -35,7 +35,6 @@
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
-                        </div>
                     </div>
                 </div>
             @endforeach
